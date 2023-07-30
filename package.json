@@ -5,10 +5,13 @@
 	"scripts": {
 		"prepare": "panda codegen",
 		"dev": "astro dev",
-		"start": "astro dev",
+		"d": "yarn dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"storybook": "storybook dev -p 6006",
+		"st": "yarn storybook",
+		"build-storybook": "storybook build"
 	},
 	"dependencies": {
 		"@astrojs/react": "^2.2.1",
@@ -19,6 +22,16 @@
 		"react-dom": "^18.0.0"
 	},
 	"devDependencies": {
-		"@pandacss/dev": "^0.9.0"
+		"@pandacss/dev": "^0.9.0",
+		"@storybook/addon-essentials": "^7.1.1",
+		"@storybook/addon-interactions": "^7.1.1",
+		"@storybook/addon-links": "^7.1.1",
+		"@storybook/addon-onboarding": "^1.0.8",
+		"@storybook/blocks": "^7.1.1",
+		"@storybook/react": "^7.1.1",
+		"@storybook/react-vite": "^7.1.1",
+		"@storybook/testing-library": "^0.2.0",
+		"prop-types": "^15.8.1",
+		"storybook": "^7.1.1"
 	}
 }
