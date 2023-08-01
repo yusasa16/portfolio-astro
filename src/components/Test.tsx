@@ -5,5 +5,5 @@ interface TestProps {
 }
 
 export default function Test(props: TestProps) {
-	return <h2 className={css({ bg: "red.400" })}>{props.text}</h2>;
+	return <h2 className={css({ bg: "bg02" })}>{props.text}</h2>;
 }
