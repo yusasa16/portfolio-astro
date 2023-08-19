@@ -1,4 +1,4 @@
-import { css } from "../../../styled-system/css";
+import { css } from '../../../styled-system/css';
 
 interface Heading2Props {
 	text: string;
@@ -9,9 +9,9 @@ export default function Heading2(props: Heading2Props) {
 	return (
 		<h2
 			className={css({
-				textAlign: "center",
-				fontSize: "2.4rem",
-				fontWeight: "bold",
+				textAlign: 'center',
+				fontSize: '2.4rem',
+				fontWeight: 'bold',
 			})}
 		>
 			{props.text}
