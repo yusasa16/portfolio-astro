@@ -1,0 +1,54 @@
+---
+import { css } from "../../../styled-system/css";
+import { container } from "../styles/container";
+
+const menuList = [
+	{
+		text: "About",
+		href: "__URL__"
+	},
+	{
+		text: "Works",
+		href: "__URL__"
+	},
+	{
+		text: "News",
+		href: "__URL__"
+	},
+	{
+		text: "Contact",
+		href: "__URL__"
+	},
+];
+
+const { isHome = false } = Astro.props;
+---
+
+<header class={css({paddingBlock: "16px", md: {paddingBlock: "120px"}})}>
+	<div class={container}>
+		<div class={css({
+			display: "flex",
+			flexDirection: "column",
+			alignItems: 'center',
+			md: {
+				flexDirection: "row",
+				justifyContent: "space-between",
+			}
+		})}>
+			{
+				isHome ? <h1 class={css({fontSize: "2.7rem"})}>Yusaku SATO</h1> : <div class={css({fontSize: "2.7rem"})}>Yusaku SATO</div>
+			}
+			<ul class={css({display: "flex", gap: "10px 32px", flexWrap: "wrap"})}>
+				{
+					menuList.map((menu) => {
+						return (
+							<li class={css({fontSize: "1.4rem"})}>
+								<a class={css({transition: "opacity 300ms", _hover: {md: {opacity: "0.6"}}})} href={menu.href}>{menu.text}</a>
+							</li>
+						)
+					})
+				}
+			</ul>
+		</div>
+	</div>
+</header>
