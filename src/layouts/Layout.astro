@@ -1,10 +1,12 @@
 ---
 import '../index.css';
+import { css } from '../../styled-system/css';
 interface Props {
 	title: string;
 	isHome?: boolean;
 }
 import CmnHeader from '../components/modules/CmnHeader.astro';
+import CmnFooter from '../components/modules/CmnFooter.astro';
 const { title, isHome = false } = Astro.props;
 ---
 
@@ -21,5 +23,12 @@ const { title, isHome = false } = Astro.props;
 	<body>
 		<CmnHeader isHome={isHome} />
 		<slot />
+		<div
+			class={css({
+				marginBlockStart: '200px',
+			})}
+		>
+			<CmnFooter />
+		</div>
 	</body>
 </html>
