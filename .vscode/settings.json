@@ -9,5 +9,12 @@
 	"css.validate": false,
 	"scss.validate": false,
 	"javascript.validate.enable": false,
-	"typescript.validate.enable": false
+	"typescript.validate.enable": false,
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"astro", // Enable .astro
+		"typescript", // Enable .ts
+		"typescriptreact" // Enable .tsx
+	]
 }
