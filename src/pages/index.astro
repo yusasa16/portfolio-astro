@@ -3,6 +3,7 @@ import { css } from '../../styled-system/css';
 import Layout from '../layouts/Layout.astro';
 import HomeMV from '../components/modules/HomeMV.astro';
 import HomeWorks from '../components/modules/HomeWorks.astro';
+import HomeBlog from '../components/modules/HomeBlog.astro';
 ---
 
 <Layout title="Welcome to Astro." isHome={true}>
@@ -10,6 +11,14 @@ import HomeWorks from '../components/modules/HomeWorks.astro';
 		<HomeMV />
 		<div class={css({ marginBlockStart: '88px' })}>
 			<HomeWorks />
+		</div>
+		<div
+			class={css({
+				marginBlockStart: '77px',
+				md: { marginBlockStart: '137px' },
+			})}
+		>
+			<HomeBlog />
 		</div>
 	</main>
 </Layout>

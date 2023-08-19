@@ -1,0 +1,78 @@
+---
+import { css } from '../../../styled-system/css';
+import { container } from '../styles/container';
+import Heading2 from '../elements/Heading2';
+
+const blogList = [
+	{
+		href: '__URL__',
+		date: '2020.XX.XX',
+		title: 'デザイン雑誌「ＸＸＸＸＸＸ Vol.11』に掲載していただきました。',
+	},
+	{
+		href: '__URL__',
+		date: '2020.XX.XX',
+		title: 'ＸＸ月ＸＸ日から写真集「ＸＸＸＸＸＸＸ」の販売を開始します。',
+	},
+	{
+		href: '__URL__',
+		date: '2019.XX.XX',
+		title:
+			'【イベント開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト',
+	},
+	{
+		href: '__URL__',
+		date: '2019.XX.XX',
+		title: 'デザイン雑誌「ＸＸＸＸＸＸ Vol.10』に掲載していただきました。',
+	},
+	{
+		href: '__URL__',
+		date: '2019.XX.XX',
+		title:
+			'【個展開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト',
+	},
+];
+---
+
+<section>
+	<div class={container}>
+		<Heading2 text="Blog" />
+		<ul
+			class={css({
+				marginBlockStart: '45px',
+				md: { marginBlockStart: '70px' },
+			})}
+		>
+			{
+				blogList.map((blog, index) => {
+					return (
+						<li
+							class={css({
+								borderBlockEnd: '1px solid #c8c8c8',
+								borderBlockStart: index === 0 ? '1px solid #c8c8c8' : '',
+							})}
+						>
+							<a
+								href={blog.href}
+								class={css({
+									display: 'grid',
+									paddingBlock: '15px',
+									paddingInline: '15px',
+									transition: 'opacity 300ms',
+									md: {
+										_hover: {
+											opacity: '0.6',
+										},
+									},
+								})}
+							>
+								<span>{blog.date}</span>
+								<span>{blog.title}</span>
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
+</section>
