@@ -1,24 +1,122 @@
 ---
 import { css } from '../../styled-system/css';
 import Layout from '../layouts/Layout.astro';
-import HomeMV from '../components/modules/HomeMV.astro';
-import HomeWorks from '../components/modules/HomeWorks.astro';
-import HomeBlog from '../components/modules/HomeBlog.astro';
+import { container } from '../components/styles/container';
+import Heading2 from '../components/elements/Heading2';
+import BlogList from '../components/modules/BlogList.astro';
+import WorkList from '../components/modules/WorkList.astro';
+
+const workList = [
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+];
+
+const blogList = [
+	{
+		href: '__URL__',
+		date: '2020.XX.XX',
+		title: 'デザイン雑誌「ＸＸＸＸＸＸ Vol.11』に掲載していただきました。',
+	},
+	{
+		href: '__URL__',
+		date: '2020.XX.XX',
+		title: 'ＸＸ月ＸＸ日から写真集「ＸＸＸＸＸＸＸ」の販売を開始します。',
+	},
+	{
+		href: '__URL__',
+		date: '2019.XX.XX',
+		title:
+			'【イベント開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト',
+	},
+	{
+		href: '__URL__',
+		date: '2019.XX.XX',
+		title: 'デザイン雑誌「ＸＸＸＸＸＸ Vol.10』に掲載していただきました。',
+	},
+	{
+		href: '__URL__',
+		date: '2019.XX.XX',
+		title:
+			'【個展開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト',
+	},
+];
 ---
 
-<Layout title="Welcome to Astro." isHome={true}>
+<Layout title="Yusaku SATOのウェブサイト" isHome={true}>
 	<main>
-		<HomeMV />
-		<div class={css({ marginBlockStart: '88px' })}>
-			<HomeWorks />
-		</div>
-		<div
+		<section>
+			<picture>
+				<img
+					src="https://placehold.jp/2560x840.png"
+					alt="メインビジュアル ダミーの画像が置かれており、画像の中央にはこのダミー画像のサイズが記載されている"
+					class={css({
+						width: '100%',
+						maxWidth: '1280px',
+						height: '420px',
+						marginInline: 'auto',
+						objectFit: 'cover',
+					})}
+				/>
+			</picture>
+		</section>
+		<section class={css({ marginBlockStart: '88px' })}>
+			<div class={container}>
+				<Heading2 text="Works" />
+				<div
+					class={css({
+						marginBlockStart: '45px',
+						md: { marginBlockStart: '70px' },
+					})}
+				>
+					<WorkList workList={workList} />
+				</div>
+			</div>
+		</section>
+		<section
 			class={css({
 				marginBlockStart: '77px',
 				md: { marginBlockStart: '137px' },
 			})}
 		>
-			<HomeBlog />
-		</div>
+			<div class={container}>
+				<Heading2 text="Blog" />
+				<div
+					class={css({
+						marginBlockStart: '45px',
+						md: { marginBlockStart: '70px' },
+					})}
+				>
+					<BlogList blogList={blogList} />
+				</div>
+			</div>
+		</section>
 	</main>
 </Layout>

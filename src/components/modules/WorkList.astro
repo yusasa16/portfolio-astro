@@ -1,0 +1,41 @@
+---
+import { css } from '../../../styled-system/css';
+interface Props {
+	workList: {
+		href: string;
+		src: string;
+		alt: string;
+	}[];
+}
+
+const { workList } = Astro.props;
+---
+
+<ul
+	class={css({
+		display: 'grid',
+		gap: '23px 24px',
+		alignItems: 'center',
+		md: { gridTemplateColumns: 'repeat(3, 1fr)' },
+	})}
+>
+	{
+		workList.map(work => {
+			return (
+				<li>
+					<a href={work.href}>
+						<img
+							src={work.src}
+							alt={work.alt}
+							class={css({
+								width: '100%',
+								objectFit: 'cover',
+								aspectRatio: '264/172',
+							})}
+						/>
+					</a>
+				</li>
+			);
+		})
+	}
+</ul>

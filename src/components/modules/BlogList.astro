@@ -1,0 +1,45 @@
+---
+import { css } from '../../../styled-system/css';
+interface Props {
+	blogList: {
+		href: string;
+		date: string;
+		title: string;
+	}[];
+}
+
+const { blogList } = Astro.props;
+---
+
+<ul>
+	{
+		blogList.map((blog, index) => {
+			return (
+				<li
+					class={css({
+						borderBlockEnd: '1px solid #c8c8c8',
+						borderBlockStart: index === 0 ? '1px solid #c8c8c8' : '',
+					})}
+				>
+					<a
+						href={blog.href}
+						class={css({
+							display: 'grid',
+							paddingBlock: '15px',
+							paddingInline: '15px',
+							transition: 'opacity 300ms',
+							md: {
+								_hover: {
+									opacity: '0.6',
+								},
+							},
+						})}
+					>
+						<span>{blog.date}</span>
+						<span>{blog.title}</span>
+					</a>
+				</li>
+			);
+		})
+	}
+</ul>
