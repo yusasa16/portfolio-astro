@@ -1,12 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import HomeMV from "../components/modules/HomeMV.astro"
-import HomeAbout from "../components/modules/HomeAbout.astro"
+import { css } from '../../styled-system/css';
+import Layout from '../layouts/Layout.astro';
+import HomeMV from '../components/modules/HomeMV.astro';
+import HomeWorks from '../components/modules/HomeWorks.astro';
 ---
 
 <Layout title="Welcome to Astro." isHome={true}>
 	<main>
 		<HomeMV />
-		<HomeAbout />
+		<div class={css({ marginBlockStart: '88px' })}>
+			<HomeWorks />
+		</div>
 	</main>
 </Layout>

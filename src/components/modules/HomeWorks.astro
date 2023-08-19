@@ -1,0 +1,73 @@
+---
+import { css } from '../../../styled-system/css';
+import { container } from '../styles/container';
+import Heading2 from '../elements/Heading2';
+
+const workList = [
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+];
+---
+
+<section>
+	<div class={container}>
+		<Heading2 text="Works" />
+		<ul
+			class={css({
+				display: 'grid',
+				gap: '23px 24px',
+				alignItems: 'center',
+				marginBlockStart: '45px',
+				md: { gridTemplateColumns: 'repeat(3, 1fr)', marginBlockStart: '70px' },
+			})}
+		>
+			{
+				workList.map(work => {
+					return (
+						<li>
+							<a href={work.href}>
+								<img
+									src={work.src}
+									alt={work.alt}
+									class={css({
+										width: '100%',
+										objectFit: 'cover',
+										aspectRatio: '264/172',
+									})}
+								/>
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
+</section>
