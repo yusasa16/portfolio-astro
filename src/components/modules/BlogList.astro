@@ -6,14 +6,15 @@ interface Props {
 		date: string;
 		title: string;
 	}[];
+	slice: number;
 }
 
-const { blogList } = Astro.props;
+const { blogList, slice } = Astro.props;
 ---
 
 <ul>
 	{
-		blogList.map((blog, index) => {
+		blogList.slice(0, slice).map((blog, index) => {
 			return (
 				<li
 					class={css({
@@ -35,7 +36,7 @@ const { blogList } = Astro.props;
 							},
 						})}
 					>
-						<span>{blog.date}</span>
+						<span>2020.XX.XX</span>
 						<span>{blog.title}</span>
 					</a>
 				</li>
