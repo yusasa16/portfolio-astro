@@ -15,6 +15,10 @@
 		"format": "prettier --write .",
 		"lint:js": "yarn eslint './src/**/*.{js,jsx,ts,tsx,astro}' --fix --ignore-path .gitignore"
 	},
+	"volta": {
+		"node": "18.19.0",
+		"yarn": "1.22.21"
+	},
 	"dependencies": {
 		"@astrojs/react": "^2.2.1",
 		"@types/react": "^18.0.21",
