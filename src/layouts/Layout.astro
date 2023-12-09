@@ -5,8 +5,8 @@ interface Props {
 	title: string;
 	isHome?: boolean;
 }
-import Header from '../components/modules/Header.astro';
-import Footer from '../components/modules/Footer.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
 const { title, isHome = false } = Astro.props;
 ---
 
