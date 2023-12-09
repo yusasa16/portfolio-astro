@@ -8,8 +8,8 @@ const menuList = [
 		href: '__URL__',
 	},
 	{
-		text: 'Works',
-		href: '__URL__',
+		text: 'Coding Patterns',
+		href: '/coding-patterns/',
 	},
 	{
 		text: 'News',
@@ -41,7 +41,9 @@ const { isHome = false } = Astro.props;
 				isHome ? (
 					<h1 class={css({ fontSize: '2.7rem' })}>Yusaku SATO</h1>
 				) : (
-					<div class={css({ fontSize: '2.7rem' })}>Yusaku SATO</div>
+					<div class={css({ fontSize: '2.7rem' })}>
+						<a href="/">Yusaku SATO</a>
+					</div>
 				)
 			}
 			<ul class={css({ display: 'flex', gap: '10px 32px', flexWrap: 'wrap' })}>
