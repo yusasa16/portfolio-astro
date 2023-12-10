@@ -17,19 +17,32 @@ const blogList: blogListType = await getMicrocms('blogs');
 		})}
 	>
 		<Heading2 text="Blog" />
-	</div>
-	<div>
-		<ul>
-			{
-				blogList.contents.map(blog => (
-					<li>
-						<a href={`/blog/${blog.id}`}>
-							<p>{blog.title}</p>
-							<img src={blog.eyecatch.url} alt="" />
-						</a>
-					</li>
-				))
-			}
-		</ul>
+		<div
+			class={css({
+				marginBlockStart: '70px',
+			})}
+		>
+			<ul
+				class={css({
+					display: 'grid',
+					gridTemplateColumns: '1fr',
+					gap: '24px',
+					md: {
+						gridTemplateColumns: 'repeat(3, 1fr)',
+					},
+				})}
+			>
+				{
+					blogList.contents.map(blog => (
+						<li>
+							<a href={`/blog/${blog.id}`}>
+								<img src={blog.eyecatch.url} alt="" />
+								<p>{blog.title}</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 	</div>
 </Layout>

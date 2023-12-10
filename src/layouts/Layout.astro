@@ -22,7 +22,9 @@ const { title, isHome = false } = Astro.props;
 	</head>
 	<body>
 		<Header isHome={isHome} />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<div
 			class={css({
 				marginBlockStart: '200px',

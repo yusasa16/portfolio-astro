@@ -7,13 +7,11 @@ import Blog from '@components/project/index/Blog.astro';
 ---
 
 <Layout title="Yusaku SATOのウェブサイト" isHome={true}>
-	<main>
-		<Hero />
-		<div class={css({ marginBlockStart: '88px' })}>
-			<CodingPattern />
-		</div>
-		<div class={css({ marginBlockStart: '77px' })}>
-			<Blog />
-		</div>
-	</main>
+	<Hero />
+	<div class={css({ marginBlockStart: '88px' })}>
+		<Blog />
+	</div>
+	<div class={css({ marginBlockStart: '77px' })}>
+		<CodingPattern />
+	</div>
 </Layout>

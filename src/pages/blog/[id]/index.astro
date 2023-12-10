@@ -3,6 +3,7 @@ export const prerender = false;
 import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
 import Heading2 from '@components/component/Heading2.astro';
+import MoreLink from '@components/component/MoreLink.astro';
 
 const { id } = Astro.params;
 
@@ -19,10 +20,17 @@ const blog: blogType = await getMicrocms('blogs', id);
 			maxWidth: '827px',
 		})}
 	>
-		<Heading2 text={blog.title} />
-	</div>
-	<div set:html={blog.content} />
-	<div class={css({ textAlign: 'center' })}>
-		<a href="/blog/">一覧に戻る</a>
+		<article>
+			<Heading2 text={blog.title} />
+			<div
+				set:html={blog.content}
+				class={css({
+					marginBlockStart: '70px',
+				})}
+			/>
+		</article>
+		<div class={css({ textAlign: 'center', marginBlockStart: '70px' })}>
+			<MoreLink text="ブログ一覧に戻る" href="/blog/" />
+		</div>
 	</div>
 </Layout>
