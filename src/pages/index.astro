@@ -1,90 +1,19 @@
 ---
 import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
-import { container } from '@components/styles/container';
-import Heading2 from '@components/component/Heading2';
-import BlogList from '@components/project/index/BlogList.astro';
-import WorkList from '@components/project/index/WorkList.astro';
-
-import getMicrocms from '@libs/getMicrocms';
-import type { blogListType } from '@types/blog';
-
-const blogList: blogListType = await getMicrocms('blogs');
-
-const newBlogList = blogList.contents.map(blog => {
-	return {
-		href: `/blog/${blog.id}`,
-		date: blog.createdAt,
-		title: blog.title,
-	};
-});
-
-const workList = [
-	{
-		href: '__URL__',
-		src: 'https://placehold.jp/528x344.png',
-		alt: 'altダミーテキスト',
-	},
-	{
-		href: '__URL__',
-		src: 'https://placehold.jp/528x344.png',
-		alt: 'altダミーテキスト',
-	},
-	{
-		href: '__URL__',
-		src: 'https://placehold.jp/528x344.png',
-		alt: 'altダミーテキスト',
-	},
-];
+import Hero from '@components/project/index/Hero.astro';
+import CodingPattern from '@components/project/index/CodingPattern.astro';
+import Blog from '@components/project/index/Blog.astro';
 ---
 
 <Layout title="Yusaku SATOのウェブサイト" isHome={true}>
 	<main>
-		<section>
-			<picture>
-				<img
-					src="https://picsum.photos/id/56/2560/840"
-					alt="メインビジュアル ダミーの画像が置かれており、画像の中央にはこのダミー画像のサイズが記載されている"
-					class={css({
-						width: '100%',
-						maxWidth: '1280px',
-						height: '420px',
-						marginInline: 'auto',
-						objectFit: 'cover',
-					})}
-				/>
-			</picture>
-		</section>
-		<section class={css({ marginBlockStart: '88px' })}>
-			<div class={container}>
-				<Heading2 text="Coding Patterns" />
-				<div
-					class={css({
-						marginBlockStart: '45px',
-						md: { marginBlockStart: '70px' },
-					})}
-				>
-					<WorkList workList={workList} />
-				</div>
-			</div>
-		</section>
-		<section
-			class={css({
-				marginBlockStart: '77px',
-				md: { marginBlockStart: '137px' },
-			})}
-		>
-			<div class={container}>
-				<Heading2 text="Blog" />
-				<div
-					class={css({
-						marginBlockStart: '45px',
-						md: { marginBlockStart: '70px' },
-					})}
-				>
-					<BlogList blogList={newBlogList} slice={5} />
-				</div>
-			</div>
-		</section>
+		<Hero />
+		<div class={css({ marginBlockStart: '88px' })}>
+			<CodingPattern />
+		</div>
+		<div class={css({ marginBlockStart: '77px' })}>
+			<Blog />
+		</div>
 	</main>
 </Layout>

@@ -1,0 +1,26 @@
+---
+import { css } from '@styled-system/css';
+
+const { text, href, isBlank } = Astro.props;
+---
+
+<div
+	class={css({
+		textAlign: 'center',
+		marginBlockStart: '54px',
+	})}
+>
+	<a
+		href={href}
+		target={isBlank ? '_blank' : null}
+		class={css({
+			textDecoration: 'underline',
+			textUnderlineOffset: '4px',
+			'@media (hover: hover)': {
+				_hover: {
+					textDecoration: 'none',
+				},
+			},
+		})}>{text}</a
+	>
+</div>

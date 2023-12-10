@@ -1,0 +1,67 @@
+---
+import { css } from '@styled-system/css';
+import { container } from '@components/styles/container';
+import Heading2 from '@components/component/Heading2.astro';
+import MoreLink from '@components/component/MoreLink.astro';
+
+const workList = [
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+	{
+		href: '__URL__',
+		src: 'https://placehold.jp/528x344.png',
+		alt: 'altダミーテキスト',
+	},
+];
+---
+
+<section>
+	<div class={container}>
+		<Heading2 text="Coding Patterns" />
+		<div
+			class={css({
+				marginBlockStart: '45px',
+				md: { marginBlockStart: '70px' },
+			})}
+		>
+			<ul
+				class={css({
+					display: 'grid',
+					gap: '23px 24px',
+					alignItems: 'center',
+					md: { gridTemplateColumns: 'repeat(3, 1fr)' },
+				})}
+			>
+				{
+					workList.map(work => {
+						return (
+							<li>
+								<a href={work.href}>
+									<img
+										src={work.src}
+										alt={work.alt}
+										class={css({
+											width: '100%',
+											objectFit: 'cover',
+											aspectRatio: '264/172',
+										})}
+									/>
+								</a>
+							</li>
+						);
+					})
+				}
+			</ul>
+		</div>
+
+		<MoreLink text="コーディングパターン一覧" href="/coding-patterns/" />
+	</div>
+</section>
