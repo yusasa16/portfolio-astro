@@ -1,0 +1,35 @@
+---
+import { css } from '@styled-system/css';
+import Layout from '@layouts/Layout.astro';
+import Heading2 from '@components/component/Heading2.tsx';
+
+import getMicrocms from '@libs/getMicrocms';
+import type { blogListType } from '@types/blog';
+const blogList: blogListType = await getMicrocms('blogs');
+---
+
+<Layout title="Blog">
+	<div
+		class={css({
+			marginInline: 'auto',
+			paddingInline: '20px',
+			maxWidth: '827px',
+		})}
+	>
+		<Heading2 text="Blog" />
+	</div>
+	<div>
+		<ul>
+			{
+				blogList.contents.map(blog => (
+					<li>
+						<a href={`/blog/${blog.id}`}>
+							<p>{blog.title}</p>
+							<img src={blog.eyecatch.url} alt="" />
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</Layout>

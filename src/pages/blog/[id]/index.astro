@@ -1,0 +1,28 @@
+---
+export const prerender = false;
+import { css } from '@styled-system/css';
+import Layout from '@layouts/Layout.astro';
+import Heading2 from '@components/component/Heading2.tsx';
+
+const { id } = Astro.params;
+
+import getMicrocms from '@libs/getMicrocms';
+import type { blogType } from '@types/blog';
+const blog: blogType = await getMicrocms('blogs', id);
+---
+
+<Layout title={blog.title}>
+	<div
+		class={css({
+			marginInline: 'auto',
+			paddingInline: '20px',
+			maxWidth: '827px',
+		})}
+	>
+		<Heading2 text={blog.title} />
+	</div>
+	<div set:html={blog.content} />
+	<div class={css({ textAlign: 'center' })}>
+		<a href="/blog/">一覧に戻る</a>
+	</div>
+</Layout>

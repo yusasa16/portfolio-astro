@@ -9,9 +9,6 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"storybook": "storybook dev -p 6006",
-		"st": "yarn storybook",
-		"build-storybook": "storybook build",
 		"format": "prettier --write .",
 		"lint:js": "yarn eslint './src/**/*.{js,jsx,ts,tsx,astro}' --fix --ignore-path .gitignore"
 	},
@@ -24,10 +21,13 @@
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.6",
 		"astro": "^4.0.3",
+		"dotenv": "^16.3.1",
+		"microcms-js-sdk": "^2.7.0",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0"
 	},
 	"devDependencies": {
+		"@astrojs/node": "^7.0.0",
 		"@pandacss/dev": "^0.9.0",
 		"@typescript-eslint/eslint-plugin": "^6.4.0",
 		"@typescript-eslint/parser": "^6.4.0",

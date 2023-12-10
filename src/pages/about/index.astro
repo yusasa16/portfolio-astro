@@ -1,0 +1,18 @@
+---
+import { css } from '@styled-system/css';
+import Layout from '@layouts/Layout.astro';
+import Heading2 from '@components/component/Heading2.tsx';
+---
+
+<Layout title="About">
+	<div
+		class={css({
+			marginInline: 'auto',
+			paddingInline: '20px',
+			maxWidth: '827px',
+		})}
+	>
+		<Heading2 text="About" />
+		<p>福岡の制作会社でマークアップエンジニアをやっている者です。</p>
+	</div>
+</Layout>

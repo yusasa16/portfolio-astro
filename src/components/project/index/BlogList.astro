@@ -1,13 +1,15 @@
 ---
 import { css } from '@styled-system/css';
 interface Props {
-	blogList: {
-		href: string;
-		date: string;
-		title: string;
-	}[];
+	blogList: blogListType;
 	slice: number;
 }
+
+type blogListType = {
+	href: string;
+	date: string;
+	title: string;
+}[];
 
 const { blogList, slice } = Astro.props;
 ---
@@ -29,14 +31,14 @@ const { blogList, slice } = Astro.props;
 							paddingBlock: '15px',
 							paddingInline: '15px',
 							transition: 'opacity 300ms',
-							md: {
+							'@media (hover: hover)': {
 								_hover: {
 									opacity: '0.6',
 								},
 							},
 						})}
 					>
-						<span>2020.XX.XX</span>
+						<span>{blog.date}</span>
 						<span>{blog.title}</span>
 					</a>
 				</li>
@@ -44,3 +46,12 @@ const { blogList, slice } = Astro.props;
 		})
 	}
 </ul>
+
+<div
+	class={css({
+		textAlign: 'center',
+		marginBlockStart: '10px',
+	})}
+>
+	<a href="/blog/">一覧へ</a>
+</div>
