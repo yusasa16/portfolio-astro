@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # panda css
 styled-system/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

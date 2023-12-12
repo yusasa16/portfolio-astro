@@ -29,6 +29,8 @@
 	"devDependencies": {
 		"@astrojs/node": "^7.0.0",
 		"@pandacss/dev": "^0.9.0",
+		"@playwright/test": "^1.40.1",
+		"@types/node": "^20.10.4",
 		"@typescript-eslint/eslint-plugin": "^6.4.0",
 		"@typescript-eslint/parser": "^6.4.0",
 		"eslint": "^8.47.0",
