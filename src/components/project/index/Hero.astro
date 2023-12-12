@@ -2,18 +2,76 @@
 import { css } from '@styled-system/css';
 ---
 
-<div>
-	<picture>
-		<img
-			src="https://picsum.photos/id/56/2560/840"
-			alt="メインビジュアル ダミーの画像が置かれており、画像の中央にはこのダミー画像のサイズが記載されている"
+<div class="hero">
+	<div
+		class={css({
+			width: '100%',
+			maxWidth: '1280px',
+			height: '420px',
+			marginInline: 'auto',
+			position: 'relative',
+			overflow: 'hidden',
+		})}
+	>
+		<svg
+			width="1280"
+			height="420"
+			viewBox="0 0 1280 420"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
 			class={css({
-				width: '100%',
-				maxWidth: '1280px',
-				height: '420px',
-				marginInline: 'auto',
-				objectFit: 'cover',
+				position: 'absolute',
+				top: '50%',
+				left: '50%',
+				transform: 'translate(-50%, -50%)',
 			})}
-		/>
-	</picture>
+		>
+			<mask
+				id="mask0_1_13"
+				style="mask-type:alpha"
+				maskUnits="userSpaceOnUse"
+				x="0"
+				y="0"
+				width="1280"
+				height="420"
+			>
+				<rect width="1280" height="420" fill="white"></rect>
+			</mask>
+			<g mask="url(#mask0_1_13)" filter="url(#noise)">
+				<rect width="1280" height="420" fill="white"></rect>
+				<path
+					d="M68.5 0L0.5 -0.5L0 420H183C219.667 409.667 287.9 372.2 267.5 305C242 221 332 215 360.5 126.5C383.3 55.7 175.333 12.6667 68.5 0Z"
+					fill="#21EE67"></path>
+				<path
+					d="M1278.48 45.5199L1280 -0.660438L1 -1V123.28C32.4301 148.181 146.389 194.52 350.786 180.665C606.282 163.348 624.531 224.469 893.715 243.824C1109.06 259.308 1239.95 118.073 1278.48 45.5199Z"
+					fill="#215BEE"></path>
+				<path
+					d="M484.945 360.621L484 419.567L1279 420V261.367C1259.46 229.582 1188.63 170.434 1061.58 188.118C902.769 210.223 891.426 132.206 724.107 107.501C590.252 87.7371 508.893 268.013 484.945 360.621Z"
+					fill="#F76B6B"></path>
+				<path
+					d="M-120.753 351.622C-120.753 351.622 -134.156 391.207 -121.698 410.568C-30.6983 552.002 612.543 715.465 673.302 411.002C685.425 350.249 692.838 284.153 673.302 252.368C653.766 220.584 509.35 139.818 382.302 157.502C223.491 179.606 321.699 263.94 191.802 302.502C61.4306 341.204 -96.8053 259.014 -120.753 351.622Z"
+					fill="#F7E16B"></path>
+			</g>
+			<defs>
+				<filter id="noise">
+					<feTurbulence
+						baseFrequency="1"
+						numOctaves="1"
+						stitchTiles="stitch"
+						type="fractalNoise"
+						result="turbulence"></feTurbulence>
+					<feGaussianBlur in="SourceGraphic" stdDeviation="64 8" result="blur"
+					></feGaussianBlur>
+					<feBlend mode="color-burn" in="turbulence" in2="blur"></feBlend>
+				</filter>
+			</defs>
+		</svg>
+	</div>
 </div>
+
+<style>
+	.hero svg {
+		display: block;
+		margin: 0 auto;
+	}
+</style>
