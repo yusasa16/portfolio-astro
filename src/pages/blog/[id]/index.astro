@@ -1,14 +1,28 @@
 ---
-export const prerender = false;
 import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
 import Heading2 from '@components/component/Heading2.astro';
 import MoreLink from '@components/component/MoreLink.astro';
+import type { blogListType } from '@types/blog';
+
+import getMicrocms from '@libs/getMicrocms';
+import type { blogListType, blogType } from '@types/blog';
 
 const { id } = Astro.params;
 
-import getMicrocms from '@libs/getMicrocms';
-import type { blogType } from '@types/blog';
+export async function getStaticPaths() {
+	const blogList: blogListType = await getMicrocms('blogs');
+	const pathList: {
+		params: { id: string };
+	}[] = [];
+	blogList.contents.forEach(blog => {
+		pathList.push({
+			params: { id: blog.id },
+		});
+	});
+	return pathList;
+}
+
 const blog: blogType = await getMicrocms('blogs', id);
 ---
 

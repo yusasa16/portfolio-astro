@@ -30,7 +30,7 @@ const blogList: blogListType = await getMicrocms('blogs');
 								})}
 							>
 								<a
-									href={blog.id}
+									href={`/blog/${blog.id}`}
 									class={css({
 										display: 'grid',
 										paddingBlock: '15px',
