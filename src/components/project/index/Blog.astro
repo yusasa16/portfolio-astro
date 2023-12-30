@@ -43,7 +43,15 @@ const blogList: blogListType = await getMicrocms('blogs');
 										},
 									})}
 								>
-									<span>{blog.createdAt}</span>
+									{(() => {
+										const createdDate = new Date(blog.createdAt);
+										return (
+											<span>
+												{createdDate.getFullYear()}年{createdDate.getMonth()}月{createdDate.getDate()}日
+											</span>
+										);
+									})()}
+
 									<span>{blog.title}</span>
 								</a>
 							</li>
@@ -52,7 +60,13 @@ const blogList: blogListType = await getMicrocms('blogs');
 				}
 			</ul>
 
-			<MoreLink text="ブログ一覧" href="/blog/" />
+			<div
+				class={css({
+					marginBlockStart: '54px',
+				})}
+			>
+				<MoreLink text="ブログ一覧" href="/blog/" />
+			</div>
 		</div>
 	</div>
 </section>

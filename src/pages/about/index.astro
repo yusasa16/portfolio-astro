@@ -2,6 +2,7 @@
 import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
 import Heading1 from '@components/component/Heading1.astro';
+import MoreLink from '@components/component/MoreLink.astro';
 ---
 
 <Layout title="About">
@@ -13,6 +14,41 @@ import Heading1 from '@components/component/Heading1.astro';
 		})}
 	>
 		<Heading1 text="About" />
-		<p>福岡の制作会社でマークアップエンジニアをやっている者です。</p>
+		<div
+			class={css({
+				marginBlockStart: '40px',
+			})}
+		>
+			<img
+				src="/profile.png"
+				alt=""
+				class={css({
+					marginInline: 'auto',
+					maxWidth: '160px',
+					borderRadius: '10000px',
+					border: '5px solid #9d9d9d',
+				})}
+			/>
+			<div
+				class={css({
+					marginBlockStart: '20px',
+					marginInline: 'auto',
+					width: 'fit-content',
+				})}
+			>
+				<p>福岡の制作会社でマークアップエンジニアをやっている者です。</p>
+				<p
+					class={css({
+						textAlign: 'center',
+					})}
+				>
+					<MoreLink
+						text="Github"
+						href="https://github.com/yusasa16"
+						isBlank={true}
+					/>
+				</p>
+			</div>
+		</div>
 	</div>
 </Layout>
