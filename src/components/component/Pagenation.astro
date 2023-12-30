@@ -1,0 +1,106 @@
+---
+import { css } from '@styled-system/css';
+
+const { page, pagePath } = Astro.props;
+---
+
+<ul
+	class={css({
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		md: {
+			gridTemplateColumns: '100px 1fr 100px',
+		},
+	})}
+>
+	<li
+		class={css({
+			display: 'flex',
+			justifyContent: 'center',
+			md: {
+				order: 1,
+			},
+		})}
+	>
+		{page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+	</li>
+	<li
+		class={css({
+			display: 'flex',
+			justifyContent: 'center',
+			md: {
+				order: 3,
+			},
+		})}
+	>
+		{page.url.next ? <a href={page.url.next}>Next</a> : null}
+	</li>
+	<li
+		class={css({
+			order: 1,
+			display: 'flex',
+			justifyContent: 'center',
+			gridRow: '1 / 2',
+			gridColumn: '1 / 3',
+			md: {
+				order: 2,
+				gridRow: 'auto',
+				gridColumn: 'auto',
+			},
+		})}
+	>
+		<ul
+			class={css({
+				display: 'flex',
+				flexWrap: 'wrap',
+				justifyContent: 'center',
+				gap: '5px 20px',
+				color: '#9e9e9e',
+			})}
+		>
+			{
+				page.currentPage - 2 > 0 ? (
+					<li>
+						<a href={`${pagePath}${page.currentPage - 2}`}>
+							{page.currentPage - 2}
+						</a>
+					</li>
+				) : null
+			}
+			{
+				page.currentPage - 1 > 0 ? (
+					<li>
+						<a href={`${pagePath}${page.currentPage - 1}`}>
+							{page.currentPage - 1}
+						</a>
+					</li>
+				) : null
+			}
+			<li
+				class={css({
+					color: '#000',
+				})}
+			>
+				{page.currentPage}
+			</li>
+			{
+				page.currentPage + 1 < page.lastPage + 1 ? (
+					<li>
+						<a href={`${pagePath}${page.currentPage + 1}`}>
+							{page.currentPage + 1}
+						</a>
+					</li>
+				) : null
+			}
+			{
+				page.currentPage + 2 < page.lastPage + 1 ? (
+					<li>
+						<a href={`${pagePath}${page.currentPage + 2}`}>
+							{page.currentPage + 2}
+						</a>
+					</li>
+				) : null
+			}
+		</ul>
+	</li>
+</ul>
