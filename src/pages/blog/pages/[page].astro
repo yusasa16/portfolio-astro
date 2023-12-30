@@ -43,7 +43,20 @@ const { page } = Astro.props;
 					page.data.map(blog => (
 						<li>
 							<a href={`/blog/${blog.id}`}>
-								<img src={blog.eyecatch.url} alt="" />
+								<div
+									class={css({
+										aspectRatio: '1200 / 630',
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+									})}
+								>
+									{blog.eyecatch ? (
+										<img src={blog.eyecatch.url} alt="" />
+									) : (
+										<img src="/ysk.svg" />
+									)}
+								</div>
 								<p>{blog.title}</p>
 							</a>
 						</li>

@@ -1,0 +1,51 @@
+---
+const { content } = Astro.props;
+---
+
+<div class="blog-content" set:html={content} />
+
+<style lang="scss" is:global>
+	.blog-content {
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: bold;
+			margin-block: 2em 1em;
+		}
+		h2 {
+			font-size: 2em;
+		}
+
+		h3 {
+			font-size: 1.8em;
+		}
+
+		h4 {
+			font-size: 1.6em;
+		}
+
+		h5 {
+			font-size: 1.4em;
+		}
+
+		h6 {
+			font-size: 1.2rem;
+		}
+
+		p {
+			margin-block: 2em 1em;
+		}
+
+		ul {
+			list-style: disc;
+			padding-inline-start: 1em;
+		}
+
+		ol {
+			list-style: decimal-leading-zero;
+			padding-inline-start: 2em;
+		}
+	}
+</style>
