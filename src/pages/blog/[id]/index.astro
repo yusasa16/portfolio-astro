@@ -42,24 +42,14 @@ const createdDate = new Date(blog.createdAt);
 					textAlign: 'right',
 				})}
 			>
-				投稿日：{createdDate.getFullYear()}年{createdDate.getMonth()}月{
-					createdDate.getDate()
-				}日
+				投稿日：{createdDate.getFullYear()}年{createdDate.getMonth()}月{createdDate.getDate()}日
 			</p>
 			<div
 				class={css({
 					marginBlockStart: '70px',
 				})}
 			>
-				{
-					blog.eyecatch ? (
-						<img
-							class={css({ marginInline: 'auto' })}
-							src={blog.eyecatch.url}
-							alt=""
-						/>
-					) : null
-				}
+				{blog.eyecatch ? <img class={css({ marginInline: 'auto' })} src={blog.eyecatch.url} alt="" /> : null}
 			</div>
 			<div
 				class={css({

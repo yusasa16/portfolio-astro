@@ -61,18 +61,14 @@ const { page, pagePath } = Astro.props;
 			{
 				page.currentPage - 2 > 0 ? (
 					<li>
-						<a href={`${pagePath}${page.currentPage - 2}`}>
-							{page.currentPage - 2}
-						</a>
+						<a href={`${pagePath}${page.currentPage - 2}`}>{page.currentPage - 2}</a>
 					</li>
 				) : null
 			}
 			{
 				page.currentPage - 1 > 0 ? (
 					<li>
-						<a href={`${pagePath}${page.currentPage - 1}`}>
-							{page.currentPage - 1}
-						</a>
+						<a href={`${pagePath}${page.currentPage - 1}`}>{page.currentPage - 1}</a>
 					</li>
 				) : null
 			}
@@ -86,18 +82,14 @@ const { page, pagePath } = Astro.props;
 			{
 				page.currentPage + 1 < page.lastPage + 1 ? (
 					<li>
-						<a href={`${pagePath}${page.currentPage + 1}`}>
-							{page.currentPage + 1}
-						</a>
+						<a href={`${pagePath}${page.currentPage + 1}`}>{page.currentPage + 1}</a>
 					</li>
 				) : null
 			}
 			{
 				page.currentPage + 2 < page.lastPage + 1 ? (
 					<li>
-						<a href={`${pagePath}${page.currentPage + 2}`}>
-							{page.currentPage + 2}
-						</a>
+						<a href={`${pagePath}${page.currentPage + 2}`}>{page.currentPage + 2}</a>
 					</li>
 				) : null
 			}
