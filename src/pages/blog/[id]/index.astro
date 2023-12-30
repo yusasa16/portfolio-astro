@@ -1,7 +1,7 @@
 ---
 import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
-import Heading2 from '@components/component/Heading2.astro';
+import Heading1 from '@components/component/Heading1.astro';
 import MoreLink from '@components/component/MoreLink.astro';
 import BlogContent from '@components/component/BlogContent.astro';
 
@@ -36,7 +36,7 @@ const createdDate = new Date(blog.createdAt);
 		})}
 	>
 		<article>
-			<Heading2 text={blog.title} />
+			<Heading1 text={blog.title} />
 			<p
 				class={css({
 					textAlign: 'right',

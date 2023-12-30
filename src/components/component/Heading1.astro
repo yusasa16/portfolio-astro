@@ -1,0 +1,19 @@
+---
+import { css } from '@styled-system/css';
+
+interface Props {
+	text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<h2
+	class={css({
+		textAlign: 'center',
+		fontSize: '2.8rem',
+		fontWeight: 'bold',
+	})}
+>
+	{text}
+</h2>
