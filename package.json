@@ -5,16 +5,15 @@
 	"scripts": {
 		"prepare": "panda codegen",
 		"dev": "astro dev",
-		"d": "yarn dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "prettier --write .",
 		"lint:js": "yarn eslint './src/**/*.{js,jsx,ts,tsx,astro}' --fix --ignore-path .gitignore"
 	},
+	"packageManager": "pnpm@8.12.1",
 	"volta": {
-		"node": "18.19.0",
-		"yarn": "1.22.21"
+		"node": "18.19.0"
 	},
 	"dependencies": {
 		"@astrojs/react": "^3.0.7",
