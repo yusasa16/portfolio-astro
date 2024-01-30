@@ -1,6 +1,4 @@
 ---
-import { css } from '@styled-system/css';
-import { container } from '@components/styles/container';
 import Heading2 from '@components/component/Heading2.astro';
 import MoreLink from '@components/component/MoreLink.astro';
 
@@ -10,63 +8,77 @@ import type { blogListType } from '@types/blog';
 const blogList: blogListType = await getMicrocms('blogs');
 ---
 
-<section>
-	<div class={container}>
+<section class="c-top-blog">
+	<div class="c-top-blog__container">
 		<Heading2 text="Blog" />
-		<div
-			class={css({
-				marginBlockStart: '45px',
-				md: { marginBlockStart: '70px' },
-			})}
-		>
-			<ul>
-				{
-					blogList.contents.slice(0, 5).map((blog, index) => {
-						return (
-							<li
-								class={css({
-									borderBlockEnd: '1px solid #c8c8c8',
-									borderBlockStart: index === 0 ? '1px solid #c8c8c8' : '',
-								})}
-							>
-								<a
-									href={`/blog/${blog.id}`}
-									class={css({
-										display: 'grid',
-										paddingBlock: '15px',
-										paddingInline: '15px',
-										transition: 'opacity 300ms',
-										'@media (hover: hover)': {
-											_hover: {
-												opacity: '0.6',
-											},
-										},
-									})}
-								>
-									{(() => {
-										const createdDate = new Date(blog.createdAt);
-										return (
-											<span>
-												{createdDate.getFullYear()}年{createdDate.getMonth()}月{createdDate.getDate()}日
-											</span>
-										);
-									})()}
+		<ul class="c-top-blog__list">
+			{
+				blogList.contents.slice(0, 5).map(blog => {
+					return (
+						<li>
+							<a href={`/blog/${blog.id}`} class="c-top-blog__list-item">
+								{(() => {
+									const createdDate = new Date(blog.createdAt);
+									return (
+										<span>
+											{createdDate.getFullYear()}年{createdDate.getMonth() + 1}月{createdDate.getDate()}日
+										</span>
+									);
+								})()}
 
-									<span>{blog.title}</span>
-								</a>
-							</li>
-						);
-					})
-				}
-			</ul>
+								<span>{blog.title}</span>
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
 
-			<div
-				class={css({
-					marginBlockStart: '54px',
-				})}
-			>
-				<MoreLink text="ブログ一覧" href="/blog/" />
-			</div>
+		<div class="c-top-blog__more">
+			<MoreLink text="ブログ一覧" href="/blog/" />
 		</div>
 	</div>
 </section>
+
+<style lang="scss">
+	.c-top-blog {
+		&__container {
+			max-width: 87rem;
+			padding-inline: 1.5rem;
+			margin-inline: auto;
+		}
+
+		&__list {
+			margin-block-start: 4.5rem;
+
+			@media screen and (min-width: 768px) {
+				margin-block-start: 7rem;
+			}
+
+			> li {
+				border: 0 solid var(--color-gray02);
+				border-block-end-width: 1px;
+
+				&:first-of-type {
+					border-block-start-width: 1px;
+				}
+			}
+
+			&-item {
+				display: grid;
+				padding: 1.5rem;
+				transition: opacity 300ms;
+
+				&:hover {
+					@media (hover: hover) {
+						opacity: 0.6;
+					}
+				}
+			}
+		}
+
+		&__more {
+			margin-block-start: 5.4rem;
+		}
+	}
+</style>

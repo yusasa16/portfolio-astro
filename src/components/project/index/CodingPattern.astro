@@ -1,6 +1,4 @@
 ---
-import { css } from '@styled-system/css';
-import { container } from '@components/styles/container';
 import Heading2 from '@components/component/Heading2.astro';
 import MoreLink from '@components/component/MoreLink.astro';
 
@@ -23,45 +21,52 @@ const workList = [
 ];
 ---
 
-<section>
-	<div class={container}>
+<section class="c-top-coding-pattern">
+	<div class="c-top-coding-pattern__container">
 		<Heading2 text="Coding Patterns" />
-		<div
-			class={css({
-				marginBlockStart: '45px',
-				md: { marginBlockStart: '70px' },
-			})}
-		>
-			<ul
-				class={css({
-					display: 'grid',
-					gap: '23px 24px',
-					alignItems: 'center',
-					md: { gridTemplateColumns: 'repeat(3, 1fr)' },
-				})}
-			>
-				{
-					workList.map(work => {
-						return (
-							<li>
-								<a href={work.href}>
-									<img
-										src={work.src}
-										alt={work.alt}
-										class={css({
-											width: '100%',
-											objectFit: 'cover',
-											aspectRatio: '264/172',
-										})}
-									/>
-								</a>
-							</li>
-						);
-					})
-				}
-			</ul>
+		<ul class="c-top-coding-pattern__list">
+			{
+				workList.map(work => {
+					return (
+						<li>
+							<a href={work.href} class="c-top-coding-pattern__list-item">
+								<img src={work.src} alt={work.alt} />
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+		<div class="c-top-coding-pattern__more">
+			<MoreLink text="コーディングパターン一覧" href="/coding-patterns/" />
 		</div>
-
-		<MoreLink text="コーディングパターン一覧" href="/coding-patterns/" />
 	</div>
 </section>
+
+<style lang="scss">
+	.c-top-coding-pattern {
+		&__container {
+			max-width: 87rem;
+			padding-inline: 1.5rem;
+			margin-inline: auto;
+		}
+
+		&__list {
+			margin-block-start: 4.5rem;
+
+			@media screen and (min-width: 768px) {
+				margin-block-start: 7rem;
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			&-item {
+				img {
+					display: block;
+					width: 100%;
+					aspect-ratio: 264 / 172;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+</style>

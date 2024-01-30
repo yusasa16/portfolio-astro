@@ -1,6 +1,6 @@
 ---
-import '../index.css';
-import { css } from '../../styled-system/css';
+import 'the-new-css-reset/css/reset.css';
+import '@styles/variables/color.scss';
 interface Props {
 	title: string;
 	isHome?: boolean;
@@ -31,17 +31,31 @@ const { title, isHome = false } = Astro.props;
 			gtag('config', 'G-6JFE2BMD1C');
 		</script>
 	</head>
-	<body>
-		<Header isHome={isHome} />
-		<main>
+	<body class="l-main">
+		<div class="l-main__header">
+			<Header isHome={isHome} />
+		</div>
+		<main class="l-main__main">
 			<slot />
 		</main>
-		<div
-			class={css({
-				marginBlockStart: '200px',
-			})}
-		>
+		<div class="l-main__footer">
 			<Footer />
 		</div>
 	</body>
 </html>
+
+<style lang="scss">
+	:root {
+		font-size: 62.5%;
+	}
+
+	body {
+		font-size: 1.6rem;
+	}
+
+	.l-main {
+		&__footer {
+			margin-block-start: 20rem;
+		}
+	}
+</style>

@@ -1,27 +1,22 @@
 ---
-import { css } from '@styled-system/css';
+
 ---
 
-<div class="hero">
-	<div
-		class={css({
-			width: '100%',
-			maxWidth: '1280px',
-			height: '420px',
-			maxHeight: 'calc(420 / 1280 * 100vw)',
-			marginInline: 'auto',
-			position: 'relative',
-			overflow: 'hidden',
-			md: {},
-		})}
-	>
-		<img
-			src="/ysk.svg"
-			class={css({
-				width: '100%',
-				height: '100%',
-				objectFit: 'cover',
-			})}
-		/>
-	</div>
+<div class="c-hero">
+	<img src="/ysk.svg" />
 </div>
+
+<style lang="scss">
+	.c-hero {
+		max-width: 128rem;
+		height: 42rem;
+		max-height: calc(420 / 1280 * 100vw);
+		margin-inline: auto;
+
+		> img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+</style>

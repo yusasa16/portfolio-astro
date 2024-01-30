@@ -3,13 +3,11 @@ import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 
-import pandacss from '@pandacss/dev/astro';
-
 // https://astro.build/config
 export default defineConfig({
 	// output: 'hybrid',
 	// adapter: nodejs({ mode: 'middleware' }),
-	integrations: [react(), pandacss()],
+	integrations: [react()],
 	redirects: {
 		'/blog/': {
 			status: 302,

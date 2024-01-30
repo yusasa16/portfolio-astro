@@ -1,5 +1,4 @@
 ---
-import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/project/index/Hero.astro';
 // import CodingPattern from '@components/project/index/CodingPattern.astro';
@@ -8,10 +7,18 @@ import Blog from '@components/project/index/Blog.astro';
 
 <Layout title="Yusaku SATOのウェブサイト" isHome={true}>
 	<Hero />
-	<div class={css({ marginBlockStart: '88px' })}>
+	<div class="p-index__blog">
 		<Blog />
 	</div>
 	<!-- <div class={css({ marginBlockStart: '77px' })}>
 		<CodingPattern />
 	</div> -->
 </Layout>
+
+<style lang="scss">
+	.p-index {
+		&__blog {
+			margin-block-start: 88px;
+		}
+	}
+</style>

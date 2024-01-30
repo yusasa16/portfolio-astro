@@ -1,25 +1,24 @@
 ---
-import { css } from '@styled-system/css';
-
 const { text, href, isBlank } = Astro.props;
 ---
 
-<div
-	class={css({
-		textAlign: 'center',
-	})}
->
-	<a
-		href={href}
-		target={isBlank ? '_blank' : null}
-		class={css({
-			textDecoration: 'underline',
-			textUnderlineOffset: '4px',
-			'@media (hover: hover)': {
-				_hover: {
-					textDecoration: 'none',
-				},
-			},
-		})}>{text}</a
-	>
+<div class="c-more-link">
+	<a href={href} target={isBlank ? '_blank' : null}>{text}</a>
 </div>
+
+<style lang="scss">
+	.c-more-link {
+		text-align: center;
+
+		> a {
+			text-decoration: underline;
+			text-underline-offset: 0.4rem;
+
+			&::hover {
+				@media (hover: hover) {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+</style>

@@ -1,5 +1,4 @@
 ---
-import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
 import Heading1 from '@components/component/Heading1.astro';
 import MoreLink from '@components/component/MoreLink.astro';
@@ -28,39 +27,49 @@ const createdDate = new Date(blog.createdAt);
 ---
 
 <Layout title={blog.title}>
-	<div
-		class={css({
-			marginInline: 'auto',
-			paddingInline: '20px',
-			maxWidth: '827px',
-		})}
-	>
+	<div class="p-blog-detail">
 		<article>
 			<Heading1 text={blog.title} />
-			<p
-				class={css({
-					textAlign: 'right',
-				})}
-			>
-				投稿日：{createdDate.getFullYear()}年{createdDate.getMonth()}月{createdDate.getDate()}日
+			<p class="p-blog-detail__date">
+				投稿日：{createdDate.getFullYear()}年{createdDate.getMonth() + 1}月{createdDate.getDate()}日
 			</p>
-			<div
-				class={css({
-					marginBlockStart: '70px',
-				})}
-			>
-				{blog.eyecatch ? <img class={css({ marginInline: 'auto' })} src={blog.eyecatch.url} alt="" /> : null}
+			<div class="p-blog-detail-thumb">
+				{blog.eyecatch ? <img src={blog.eyecatch.url} alt="" /> : null}
 			</div>
-			<div
-				class={css({
-					marginBlockStart: '70px',
-				})}
-			>
+			<div class="p-blog-detail__content">
 				<BlogContent content={blog.content} />
 			</div>
 		</article>
-		<div class={css({ textAlign: 'center', marginBlockStart: '70px' })}>
+		<div class="p-blog-detail__more">
 			<MoreLink text="ブログ一覧に戻る" href="/blog/" />
 		</div>
 	</div>
 </Layout>
+
+<style lang="scss">
+	.p-blog-detail {
+		margin-inline: auto;
+		padding-inline: 20px;
+		max-width: 827px;
+
+		&__date {
+			text-align: right;
+		}
+
+		&__thumb {
+			margin-block-start: 70px;
+
+			> img {
+				margin-inline: auto;
+			}
+		}
+
+		&__content {
+			margin-block-start: 70px;
+		}
+
+		&__more {
+			margin-block-start: 70px;
+		}
+	}
+</style>

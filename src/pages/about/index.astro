@@ -1,50 +1,44 @@
 ---
-import { css } from '@styled-system/css';
 import Layout from '@layouts/Layout.astro';
 import Heading1 from '@components/component/Heading1.astro';
 import MoreLink from '@components/component/MoreLink.astro';
 ---
 
 <Layout title="About">
-	<div
-		class={css({
-			marginInline: 'auto',
-			paddingInline: '20px',
-			maxWidth: '827px',
-		})}
-	>
+	<div class="p-about">
 		<Heading1 text="About" />
-		<div
-			class={css({
-				marginBlockStart: '40px',
-			})}
-		>
-			<img
-				src="/profile.png"
-				alt=""
-				class={css({
-					marginInline: 'auto',
-					maxWidth: '160px',
-					borderRadius: '10000px',
-					border: '5px solid #9d9d9d',
-				})}
-			/>
-			<div
-				class={css({
-					marginBlockStart: '20px',
-					marginInline: 'auto',
-					width: 'fit-content',
-				})}
-			>
+		<div class="p-about__content">
+			<img src="/profile.png" alt="" class="p-about__profile-img" />
+			<div class="p-about__text">
 				<p>福岡の制作会社でマークアップエンジニアをやっている者です。</p>
-				<p
-					class={css({
-						textAlign: 'center',
-					})}
-				>
-					<MoreLink text="Github" href="https://github.com/yusasa16" isBlank={true} />
-				</p>
+				<MoreLink text="Github" href="https://github.com/yusasa16" isBlank={true} />
 			</div>
 		</div>
 	</div>
 </Layout>
+
+<style lang="scss">
+	.p-about {
+		margin-inline: auto;
+		padding-inline: 20px;
+		max-width: 827px;
+
+		&__content {
+			margin-block-start: 40px;
+		}
+
+		&__profile-img {
+			margin-inline: auto;
+			max-width: 160px;
+			border-radius: 10000px;
+			border: 5px solid var(--color-gray);
+			display: block;
+		}
+
+		&__text {
+			margin-inline: auto;
+			margin-block-start: 20px;
+			width: fit-content;
+		}
+	}
+</style>

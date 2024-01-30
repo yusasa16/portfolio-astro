@@ -1,7 +1,4 @@
 ---
-import { css } from '@styled-system/css';
-import { container } from '@components/styles/container';
-
 const menuList = [
 	{
 		text: 'About',
@@ -24,47 +21,76 @@ const menuList = [
 const { isHome = false } = Astro.props;
 ---
 
-<header class={css({ paddingBlock: '16px', md: { paddingBlock: '120px' } })}>
-	<div class={container}>
-		<div
-			class={css({
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				md: {
-					flexDirection: 'row',
-					justifyContent: 'space-between',
-				},
-			})}
-		>
-			{
-				isHome ? (
-					<h1 class={css({ fontSize: '2.7rem' })}>Yusaku SATO</h1>
-				) : (
-					<div class={css({ fontSize: '2.7rem' })}>
-						<a href="/">Yusaku SATO</a>
-					</div>
-				)
-			}
-			<ul class={css({ display: 'flex', gap: '10px 32px', flexWrap: 'wrap' })}>
+<header class="l-header">
+	<div class="l-header__container">
+		{
+			isHome ? (
+				<h1 class="l-header__title">Yusaku SATO</h1>
+			) : (
+				<div class="l-header__title">
+					<a href="/">Yusaku SATO</a>
+				</div>
+			)
+		}
+		<nav class="l-header__nav">
+			<ul>
 				{
 					menuList.map(menu => {
 						return (
-							<li class={css({ fontSize: '1.4rem' })}>
-								<a
-									class={css({
-										transition: 'opacity 300ms',
-										_hover: { md: { opacity: '0.6' } },
-									})}
-									href={menu.href}
-								>
-									{menu.text}
-								</a>
+							<li>
+								<a href={menu.href}>{menu.text}</a>
 							</li>
 						);
 					})
 				}
 			</ul>
-		</div>
+		</nav>
 	</div>
 </header>
+
+<style lang="scss">
+	.l-header {
+		padding-block: 1.6rem;
+
+		@media screen and (min-width: 768px) {
+			padding-block: 12rem;
+		}
+
+		&__container {
+			max-width: 87rem;
+			padding-inline: 1.5rem;
+			margin-inline: auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			@media screen and (min-width: 768px) {
+				flex-direction: row;
+				justify-content: space-between;
+			}
+		}
+
+		&__title {
+			font-size: 2.7rem;
+		}
+
+		&__nav {
+			> ul {
+				display: flex;
+				gap: 1rem 3.2rem;
+				flex-wrap: wrap;
+				font-size: 1.4rem;
+
+				a {
+					transition: opacity 300ms;
+
+					&:hover {
+						@media (hover: hover) {
+							opacity: 0.6;
+						}
+					}
+				}
+			}
+		}
+	}
+</style>
