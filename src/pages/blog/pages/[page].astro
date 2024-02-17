@@ -21,11 +21,11 @@ const { page } = Astro.props;
 			{
 				page.data.map(blog => (
 					<li>
-						<a href={`/blog/${blog.id}`}>
+						<a class="p-blog-index__item" href={`/blog/${blog.id}`}>
 							<div class="p-blog-index__thumb">
 								{blog.eyecatch ? <img src={blog.eyecatch.url} alt="" /> : <img src="/thumb-ysk.png" />}
 							</div>
-							<p>{blog.title}</p>
+							<p class="p-blog-index__title">{blog.title}</p>
 						</a>
 					</li>
 				))
@@ -44,7 +44,9 @@ const { page } = Astro.props;
 		max-width: 827px;
 
 		&__list {
-			margin-block-start: 70px;
+			margin-block: 70px 0;
+			padding-inline: 0;
+			list-style: none;
 			display: grid;
 			grid-template-columns: 1fr;
 			gap: 24px;
@@ -53,12 +55,27 @@ const { page } = Astro.props;
 				grid-template-columns: repeat(3, 1fr);
 			}
 		}
+		&__item {
+			color: inherit;
+			text-decoration: none;
+		}
 
 		&__thumb {
 			aspect-ratio: 1200 / 630;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+
+			> img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__title {
+			margin-block: 0;
 		}
 
 		&__pagination {

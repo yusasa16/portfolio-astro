@@ -50,6 +50,9 @@ const { page, pagePath } = Astro.props;
 	.c-pagenation {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
+		margin-block: 0;
+		padding-inline: 0;
+		list-style: none;
 
 		@media screen and (min-width: 768px) {
 			grid-template-columns: 100px 1fr 100px;
@@ -86,6 +89,9 @@ const { page, pagePath } = Astro.props;
 			}
 
 			> ul {
+				margin-block: 0;
+				padding-inline: 0;
+				list-style: none;
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: center;
