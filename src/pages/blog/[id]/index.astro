@@ -33,7 +33,7 @@ const createdDate = new Date(blog.createdAt);
 			<p class="p-blog-detail__date">
 				投稿日：{createdDate.getFullYear()}年{createdDate.getMonth() + 1}月{createdDate.getDate()}日
 			</p>
-			<div class="p-blog-detail-thumb">
+			<div class="p-blog-detail__thumb">
 				{blog.eyecatch ? <img src={blog.eyecatch.url} alt="" /> : null}
 			</div>
 			<div class="p-blog-detail__content">
@@ -60,6 +60,10 @@ const createdDate = new Date(blog.createdAt);
 			margin-block-start: 70px;
 
 			> img {
+				display: block;
+				max-width: 100%;
+				width: 500px;
+				height: auto;
 				margin-inline: auto;
 			}
 		}

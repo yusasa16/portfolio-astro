@@ -1,6 +1,7 @@
 ---
 import 'normalize.css';
 import '@styles/variables/color.scss';
+import '@styles/_all.scss';
 interface Props {
 	title: string;
 	isHome?: boolean;
@@ -32,9 +33,7 @@ const { title, isHome = false } = Astro.props;
 		</script>
 	</head>
 	<body class="l-main">
-		<div class="l-main__header">
-			<Header isHome={isHome} />
-		</div>
+		<Header isHome={isHome} />
 		<main class="l-main__main">
 			<slot />
 		</main>
@@ -45,14 +44,6 @@ const { title, isHome = false } = Astro.props;
 </html>
 
 <style lang="scss">
-	:root {
-		font-size: 62.5%;
-	}
-
-	body {
-		font-size: 1.6rem;
-	}
-
 	.l-main {
 		&__footer {
 			margin-block-start: 20rem;

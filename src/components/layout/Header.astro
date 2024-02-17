@@ -32,47 +32,93 @@ const { isHome = false } = Astro.props;
 				</div>
 			)
 		}
-		<nav class="l-header__nav">
-			<ul>
+		<div class="l-header__button">
+			<button type="button" id="headerButtonOpen" aria-controls="headerNav">
+				<span class="l-header__button-label">ヘッダーナビゲーションを開く</span>
+				<span class="l-header__button-deco"></span>
+			</button>
+		</div>
+		<dialog class="l-header__nav" id="headerNav">
+			<div class="l-header__container">
 				{
-					menuList.map(menu => {
-						return (
-							<li>
-								<a href={menu.href}>{menu.text}</a>
-							</li>
-						);
-					})
+					isHome ? (
+						<div class="l-header__title">Yusaku SATO</div>
+					) : (
+						<div class="l-header__title">
+							<a href="/">Yusaku SATO</a>
+						</div>
+					)
 				}
-			</ul>
-		</nav>
+				<div class="l-header__button">
+					<button type="button" id="headerButtonClose" aria-controls="headerNav" autofocus>
+						<span class="l-header__button-label">ヘッダーナビゲーションを閉じる</span>
+						<span class="l-header__button-deco"></span>
+					</button>
+				</div>
+			</div>
+			<nav>
+				<ul class="l-header__nav-list">
+					{
+						menuList.map(menu => {
+							return (
+								<li>
+									<a href={menu.href}>{menu.text}</a>
+								</li>
+							);
+						})
+					}
+				</ul>
+			</nav>
+		</dialog>
 	</div>
 </header>
 
+<script>
+	const headerButtonOpen = document.getElementById('headerButtonOpen');
+	const headerButtonClose = document.getElementById('headerButtonClose');
+
+	headerButtonOpen?.addEventListener('click', function () {
+		const controls = this.getAttribute('aria-controls');
+		if (!controls) {
+			return;
+		}
+		document.querySelector<HTMLDialogElement>(`#${controls}`)?.showModal();
+	});
+
+	headerButtonClose?.addEventListener('click', function () {
+		const controls = this.getAttribute('aria-controls');
+		if (!controls) {
+			return;
+		}
+		document.querySelector<HTMLDialogElement>(`#${controls}`)?.close();
+	});
+</script>
+
 <style lang="scss">
 	.l-header {
-		padding-block: 1.6rem;
-
-		@media screen and (min-width: 768px) {
-			padding-block: 2rem;
-		}
+		background-color: var(--color-lightest);
+		position: sticky;
+		top: 0;
+		z-index: 10;
 
 		&__container {
 			max-width: 87rem;
 			padding-inline: 1.5rem;
+			padding-block: 1.6rem;
 			margin-inline: auto;
 			display: flex;
-			flex-direction: column;
+			justify-content: space-between;
 			align-items: center;
 
 			@media screen and (min-width: 768px) {
-				flex-direction: row;
-				justify-content: space-between;
+				padding-block: 2rem;
 			}
 		}
 
 		&__title {
 			font-weight: normal;
 			font-size: 2.7rem;
+			margin-block: 0;
 
 			> a {
 				color: inherit;
@@ -80,14 +126,87 @@ const { isHome = false } = Astro.props;
 			}
 		}
 
+		&__button {
+			> button {
+				display: block;
+				background-color: transparent;
+				border: 0;
+				width: 5rem;
+				height: 5rem;
+				padding-inline: 0;
+				position: relative;
+			}
+
+			&-label {
+				display: block;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				width: 1px;
+				height: 1px;
+			}
+
+			&-deco {
+				width: 3rem;
+				height: 0.2rem;
+				background-color: var(--color-darkest);
+				position: absolute;
+				inset: 0;
+				margin: auto;
+
+				&::before,
+				&::after {
+					content: '';
+					display: block;
+					width: 100%;
+					height: 100%;
+					background-color: var(--color-darkest);
+					position: absolute;
+					inset: 0;
+					margin: auto;
+				}
+
+				&::before {
+					top: -2rem;
+				}
+
+				&::after {
+					bottom: -2rem;
+				}
+			}
+		}
+
 		&__nav {
-			> ul {
-				display: flex;
-				gap: 1rem 3.2rem;
-				flex-wrap: wrap;
-				font-size: 1.4rem;
+			max-width: none;
+			width: 100%;
+			border: 0;
+			margin: 0;
+			padding: 0;
+
+			&-list {
+				margin-block: 0;
+				padding-block: 2rem;
+				padding-inline: 2rem;
+				margin-inline: auto;
+				max-width: 100rem;
+				list-style: none;
+				font-size: 1.8rem;
+
+				> li {
+					// border: 0 solid var(--color-gray);
+					// border-block-end-width: 1px;
+
+					&:first-child {
+						// border-block-start-width: 1px;
+					}
+				}
 
 				a {
+					text-decoration: none;
+					text-align: center;
+					color: inherit;
+					display: block;
+					padding-block: 1rem;
+					padding-inline: 0.5em;
 					transition: opacity 300ms;
 
 					&:hover {
