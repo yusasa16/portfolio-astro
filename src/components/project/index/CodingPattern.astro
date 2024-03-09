@@ -44,6 +44,7 @@ const workList = [
 </section>
 
 <style lang="scss">
+	@use '@styles/variables/index';
 	.c-top-coding-pattern {
 		&__container {
 			max-width: 87rem;
@@ -54,7 +55,7 @@ const workList = [
 		&__list {
 			margin-block-start: 4.5rem;
 
-			@media screen and (min-width: 768px) {
+			@media (--pc-vp) {
 				margin-block-start: 7rem;
 				grid-template-columns: repeat(3, 1fr);
 			}

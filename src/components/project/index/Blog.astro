@@ -41,6 +41,8 @@ const blogList: blogListType = await getMicrocms('blogs');
 </section>
 
 <style lang="scss">
+	@use '@styles/variables/index';
+
 	.c-top-blog {
 		&__container {
 			max-width: 87rem;
@@ -53,7 +55,7 @@ const blogList: blogListType = await getMicrocms('blogs');
 			padding-inline: 0;
 			list-style: none;
 
-			@media screen and (min-width: 768px) {
+			@media (--pc-vp) {
 				margin-block-start: 7rem;
 			}
 
