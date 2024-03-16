@@ -21,7 +21,7 @@ const menuList = [
 const { isHome = false } = Astro.props;
 ---
 
-<header class="l-header">
+<header class="l-header" x-data="{ open: false }">
 	<div class="l-header__container">
 		{
 			isHome ? (
@@ -33,12 +33,12 @@ const { isHome = false } = Astro.props;
 			)
 		}
 		<div class="l-header__button">
-			<button type="button" id="headerButtonOpen" aria-controls="headerNav">
+			<button type="button" id="headerButtonOpen" aria-controls="headerNav" @click="open=!open">
 				<span class="l-header__button-label">ヘッダーナビゲーションを開く</span>
 				<span class="l-header__button-deco"></span>
 			</button>
 		</div>
-		<dialog class="l-header__nav" id="headerNav">
+		<dialog class="l-header__nav" id="headerNav" x-show="open" x-htmldialog.noscroll="open = false">
 			<div class="l-header__container">
 				{
 					isHome ? (
@@ -50,7 +50,7 @@ const { isHome = false } = Astro.props;
 					)
 				}
 				<div class="l-header__button">
-					<button type="button" id="headerButtonClose" aria-controls="headerNav" autofocus>
+					<button type="button" id="headerButtonClose" aria-controls="headerNav" @click="open=!open" autofocus>
 						<span class="l-header__button-label">ヘッダーナビゲーションを閉じる</span>
 						<span class="l-header__button-deco"></span>
 					</button>
@@ -72,27 +72,6 @@ const { isHome = false } = Astro.props;
 		</dialog>
 	</div>
 </header>
-
-<script>
-	const headerButtonOpen = document.getElementById('headerButtonOpen');
-	const headerButtonClose = document.getElementById('headerButtonClose');
-
-	headerButtonOpen?.addEventListener('click', function () {
-		const controls = this.getAttribute('aria-controls');
-		if (!controls) {
-			return;
-		}
-		document.querySelector<HTMLDialogElement>(`#${controls}`)?.showModal();
-	});
-
-	headerButtonClose?.addEventListener('click', function () {
-		const controls = this.getAttribute('aria-controls');
-		if (!controls) {
-			return;
-		}
-		document.querySelector<HTMLDialogElement>(`#${controls}`)?.close();
-	});
-</script>
 
 <style lang="scss">
 	@use '@styles/variables/index';

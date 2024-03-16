@@ -3,11 +3,13 @@ import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 
+import alpinejs from '@astrojs/alpinejs';
+
 // https://astro.build/config
 export default defineConfig({
 	// output: 'hybrid',
 	// adapter: nodejs({ mode: 'middleware' }),
-	integrations: [react()],
+	integrations: [react(), alpinejs({ entrypoint: '/src/entrypoint' })],
 	redirects: {
 		'/blog/': {
 			status: 302,
