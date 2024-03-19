@@ -2,25 +2,6 @@
 const { text, href, isBlank } = Astro.props;
 ---
 
-<div class="c-more-link">
-	<a href={href} target={isBlank ? '_blank' : null}>{text}</a>
+<div class="text-center">
+	<a href={href} target={isBlank ? '_blank' : null} class="underline underline-offset-4 hover:no-underline">{text}</a>
 </div>
-
-<style lang="scss">
-	@use '@styles/variables/index';
-	.c-more-link {
-		text-align: center;
-
-		> a {
-			text-decoration: underline;
-			text-underline-offset: 0.4rem;
-			color: inherit;
-
-			&::hover {
-				@media (hover: hover) {
-					text-decoration: none;
-				}
-			}
-		}
-	}
-</style>

@@ -9,14 +9,14 @@ const blogList: blogListType = await getMicrocms('blogs');
 ---
 
 <section class="c-top-blog">
-	<div class="c-top-blog__container">
+	<div class="max-w-4xl px-3.5 mx-auto">
 		<Heading2 text="Blog" />
-		<ul class="c-top-blog__list">
+		<ul class="mt-11">
 			{
 				blogList.contents.slice(0, 5).map(blog => {
 					return (
-						<li>
-							<a href={`/blog/${blog.id}`} class="c-top-blog__list-item">
+						<li class="border-b first:border-t border-gray-400">
+							<a href={`/blog/${blog.id}`} class="grid p-3.5 hover:opacity-60">
 								{(() => {
 									const createdDate = new Date(blog.createdAt);
 									return (
@@ -34,57 +34,8 @@ const blogList: blogListType = await getMicrocms('blogs');
 			}
 		</ul>
 
-		<div class="c-top-blog__more">
+		<div class="mt-14">
 			<MoreLink text="ブログ一覧" href="/blog/" />
 		</div>
 	</div>
 </section>
-
-<style lang="scss">
-	@use '@styles/variables/index';
-
-	.c-top-blog {
-		&__container {
-			max-width: 87rem;
-			padding-inline: 1.5rem;
-			margin-inline: auto;
-		}
-
-		&__list {
-			margin-block: 4.5rem 0;
-			padding-inline: 0;
-			list-style: none;
-
-			@media (--pc-vp) {
-				margin-block-start: 7rem;
-			}
-
-			> li {
-				border: 0 solid var(--color-gray02);
-				border-block-end-width: 1px;
-
-				&:first-of-type {
-					border-block-start-width: 1px;
-				}
-			}
-
-			&-item {
-				display: grid;
-				padding: 1.5rem;
-				text-decoration: none;
-				color: inherit;
-				transition: opacity 300ms;
-
-				&:hover {
-					@media (hover: hover) {
-						opacity: 0.6;
-					}
-				}
-			}
-		}
-
-		&__more {
-			margin-block-start: 5.4rem;
-		}
-	}
-</style>

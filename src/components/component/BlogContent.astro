@@ -11,41 +11,38 @@ const { content } = Astro.props;
 		h4,
 		h5,
 		h6 {
-			font-weight: bold;
-			margin-block: 2em 1em;
+			@apply font-bold mt-14 mb-10;
 		}
 		h2 {
-			font-size: 2em;
+			@apply text-3xl;
 		}
 
 		h3 {
-			font-size: 1.8em;
+			@apply text-2xl;
 		}
 
 		h4 {
-			font-size: 1.6em;
+			@apply text-xl;
 		}
 
 		h5 {
-			font-size: 1.4em;
+			@apply text-lg;
 		}
 
 		h6 {
-			font-size: 1.2rem;
+			@apply text-base;
 		}
 
 		p {
-			margin-block: 2em 1em;
+			@apply my-4;
 		}
 
 		ul {
-			list-style: disc;
-			padding-inline-start: 1em;
+			@apply list-disc ps-4;
 		}
 
 		ol {
-			list-style: decimal-leading-zero;
-			padding-inline-start: 2em;
+			@apply list-decimal ps-8;
 		}
 	}
 </style>
