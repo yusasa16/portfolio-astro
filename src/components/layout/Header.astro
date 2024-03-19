@@ -19,50 +19,72 @@ const menuList = [
 ];
 
 const { isHome = false } = Astro.props;
+
+const twClasses = {
+	container: 'max-w-4xl p-4 mx-auto flex justify-between items-center md:py-5',
+	title: 'font-normal text-2xl',
+};
 ---
 
-<header class="l-header" x-data="{ open: false }">
-	<div class="l-header__container">
+<header class="sticky top-0 z-10 bg-white" x-data="{ open: false }">
+	<div class={twClasses.container}>
 		{
 			isHome ? (
-				<h1 class="l-header__title">Yusaku SATO</h1>
+				<h1 class={twClasses.title}>Yusaku SATO</h1>
 			) : (
-				<div class="l-header__title">
+				<div class={twClasses.title}>
 					<a href="/">Yusaku SATO</a>
 				</div>
 			)
 		}
-		<div class="l-header__button">
-			<button type="button" id="headerButtonOpen" aria-controls="headerNav" @click="open=!open">
-				<span class="l-header__button-label">ヘッダーナビゲーションを開く</span>
-				<span class="l-header__button-deco"></span>
-			</button>
-		</div>
-		<dialog class="l-header__nav" id="headerNav" x-show="open" x-htmldialog.noscroll="open = false">
-			<div class="l-header__container">
+		<button
+			class="block size-12 relative"
+			type="button"
+			id="headerButtonOpen"
+			aria-controls="headerNav"
+			@click="open=!open"
+		>
+			<span class="sr-only">ヘッダーナビゲーションを開く</span>
+			<span class="w-7 h-0.5 bg-black block absolute inset-0 m-auto">
+				<span class="block size-full bg-black absolute inset-0 m-auto mt-2"></span>
+				<span class="block size-full bg-black absolute inset-0 m-auto mb-2"></span>
+			</span>
+		</button>
+		<dialog class="w-full max-w-full m-0 p-0" id="headerNav" x-show="open" x-htmldialog.noscroll="open = false">
+			<div class={twClasses.container}>
 				{
 					isHome ? (
-						<div class="l-header__title">Yusaku SATO</div>
+						<div class={twClasses.title}>Yusaku SATO</div>
 					) : (
-						<div class="l-header__title">
+						<div class={twClasses.title}>
 							<a href="/">Yusaku SATO</a>
 						</div>
 					)
 				}
-				<div class="l-header__button">
-					<button type="button" id="headerButtonClose" aria-controls="headerNav" @click="open=!open" autofocus>
-						<span class="l-header__button-label">ヘッダーナビゲーションを閉じる</span>
-						<span class="l-header__button-deco"></span>
-					</button>
-				</div>
+				<button
+					class="block size-12 relative"
+					type="button"
+					id="headerButtonClose"
+					aria-controls="headerNav"
+					@click="open=!open"
+					autofocus
+				>
+					<span class="sr-only">ヘッダーナビゲーションを閉じる</span>
+					<span class="w-7 h-0.5 bg-black block absolute inset-0 m-auto">
+						<span class="block size-full bg-black absolute inset-0 m-auto mt-2"></span>
+						<span class="block size-full bg-black absolute inset-0 m-auto mb-2"></span>
+					</span>
+				</button>
 			</div>
 			<nav>
-				<ul class="l-header__nav-list">
+				<ul class="mx-auto p-5 max-w-5xl text-lg">
 					{
 						menuList.map(menu => {
 							return (
 								<li>
-									<a href={menu.href}>{menu.text}</a>
+									<a class="block text-center px-1 py-2 hover:opacity-60" href={menu.href}>
+										{menu.text}
+									</a>
 								</li>
 							);
 						})
@@ -72,131 +94,3 @@ const { isHome = false } = Astro.props;
 		</dialog>
 	</div>
 </header>
-
-<style lang="scss">
-	@use '@styles/variables/index';
-
-	.l-header {
-		background-color: var(--color-lightest);
-		position: sticky;
-		top: 0;
-		z-index: 10;
-
-		&__container {
-			max-width: 87rem;
-			padding-inline: 1.5rem;
-			padding-block: 1.6rem;
-			margin-inline: auto;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-
-			@media (--pc-vp) {
-				padding-block: 2rem;
-			}
-		}
-
-		&__title {
-			font-weight: normal;
-			font-size: 2.7rem;
-			margin-block: 0;
-
-			> a {
-				color: inherit;
-				text-decoration: none;
-			}
-		}
-
-		&__button {
-			> button {
-				display: block;
-				background-color: transparent;
-				border: 0;
-				width: 5rem;
-				height: 5rem;
-				padding-inline: 0;
-				position: relative;
-			}
-
-			&-label {
-				display: block;
-				overflow: hidden;
-				clip: rect(0, 0, 0, 0);
-				width: 1px;
-				height: 1px;
-			}
-
-			&-deco {
-				width: 3rem;
-				height: 0.2rem;
-				background-color: var(--color-darkest);
-				position: absolute;
-				inset: 0;
-				margin: auto;
-
-				&::before,
-				&::after {
-					content: '';
-					display: block;
-					width: 100%;
-					height: 100%;
-					background-color: var(--color-darkest);
-					position: absolute;
-					inset: 0;
-					margin: auto;
-				}
-
-				&::before {
-					top: -2rem;
-				}
-
-				&::after {
-					bottom: -2rem;
-				}
-			}
-		}
-
-		&__nav {
-			max-width: none;
-			width: 100%;
-			border: 0;
-			margin: 0;
-			padding: 0;
-
-			&-list {
-				margin-block: 0;
-				padding-block: 2rem;
-				padding-inline: 2rem;
-				margin-inline: auto;
-				max-width: 100rem;
-				list-style: none;
-				font-size: 1.8rem;
-
-				> li {
-					// border: 0 solid var(--color-gray);
-					// border-block-end-width: 1px;
-
-					&:first-child {
-						// border-block-start-width: 1px;
-					}
-				}
-
-				a {
-					text-decoration: none;
-					text-align: center;
-					color: inherit;
-					display: block;
-					padding-block: 1rem;
-					padding-inline: 0.5em;
-					transition: opacity 300ms;
-
-					&:hover {
-						@media (hover: hover) {
-							opacity: 0.6;
-						}
-					}
-				}
-			}
-		}
-	}
-</style>

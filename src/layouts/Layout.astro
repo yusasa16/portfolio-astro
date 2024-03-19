@@ -1,7 +1,7 @@
 ---
 import 'normalize.css';
 import '@styles/variables/color.scss';
-import '@styles/_all.scss';
+// import '@styles/_all.scss';
 import '@styles/index.css';
 interface Props {
 	title: string;
@@ -36,21 +36,13 @@ const { title, isHome = false } = Astro.props;
 			gtag('config', 'G-6JFE2BMD1C');
 		</script>
 	</head>
-	<body class="l-main">
+	<body>
 		<Header isHome={isHome} />
-		<main class="l-main__main">
+		<main>
 			<slot />
 		</main>
-		<div class="l-main__footer">
+		<div class="mt-48">
 			<Footer />
 		</div>
 	</body>
 </html>
-
-<style lang="scss">
-	.l-main {
-		&__footer {
-			margin-block-start: 20rem;
-		}
-	}
-</style>
